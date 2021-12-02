@@ -25,7 +25,10 @@ model.compile(loss='mse', optimizer='adam')
 from tensorflow.keras.callbacks import EarlyStopping
 es = EarlyStopping(monitor = 'val_loss', patience = 30, mode = 'min', verbose=1, restore_best_weights= True)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b6273d91f0d2a8bda64398dfce3bbe5e3e083b07
 '''
 restore_best_weights 사용
 True: training이 끝난 후, model의 weight를 monitor하고 있던 값이 가장 좋았을 때의 weight로 복원함
@@ -45,7 +48,10 @@ restore_best_weights를 사용할 시 최적의 weight값을 기록만 할 뿐 �
 
 '''
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b6273d91f0d2a8bda64398dfce3bbe5e3e083b07
 
 start= time.time()
 hist = model.fit(x_train, y_train, epochs=1000, batch_size=1, validation_split=0.2, callbacks=[es]) 
@@ -84,6 +90,7 @@ plt.ylabel('loss') #y축
 plt.xlabel('epoch') #x축
 plt.legend(loc='upper right') 
 plt.show()
+<<<<<<< HEAD
 
 
 '''
@@ -104,3 +111,5 @@ restore_best_weights를 사용할 시 최적의 weight값을 기록만 할 뿐 �
 
 '''
 
+=======
+>>>>>>> b6273d91f0d2a8bda64398dfce3bbe5e3e083b07
