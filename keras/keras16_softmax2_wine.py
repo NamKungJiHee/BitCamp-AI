@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import numpy as np 
 from sklearn.datasets import load_wine
 from sklearn.model_selection import train_test_split
@@ -208,7 +207,7 @@ results=model.predict(x_test[:7])
 print(y_test[:7])  
 print(results)
 
-'''
+
 loss:  0.22500453889369965
 accuracy:  0.9166666865348816     ex) 개, 고양이, 사람
 [[0. 0. 1.]       사람
@@ -225,5 +224,4 @@ accuracy:  0.9166666865348816     ex) 개, 고양이, 사람
  [2.90702184e-04 9.97155547e-01 2.55370536e-03]
  [4.67943282e-05 9.99127686e-01 8.25554773e-04]
  [1.18345104e-01 5.99239692e-02 8.21730912e-01]]
->>>>>>> b6273d91f0d2a8bda64398dfce3bbe5e3e083b07
 '''

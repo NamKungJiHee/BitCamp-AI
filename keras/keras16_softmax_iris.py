@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import numpy as np 
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
@@ -210,7 +209,7 @@ results=model.predict(x_test[:7])
 print(y_test[:7])  
 print(results)
 
-'''
+
 loss:  0.10424169898033142
 accuracy:  0.9666666388511658
 [[0. 1. 0.]
@@ -227,5 +226,4 @@ accuracy:  0.9666666388511658
  [3.1696740e-04 9.9589008e-01 3.7929991e-03]
  [2.1666931e-03 9.9604934e-01 1.7839626e-03]
  [9.9946147e-01 5.3849758e-04 8.3059813e-17]]
->>>>>>> b6273d91f0d2a8bda64398dfce3bbe5e3e083b07
 '''
