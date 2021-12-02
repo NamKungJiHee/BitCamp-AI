@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import numpy as np
 import pandas as pd   
 
@@ -21,16 +20,6 @@ print(gender_submission.shape)  # (418, 2)-----> (418, 1)
 
 #print(train.info())
 print(train.describe()) 
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -52,7 +41,7 @@ max      1.000000    3.000000   80.000000    8.000000    6.000000  512.329200
 결측치 Nan
 y는 Survived
 '''
-=======
+
 import numpy as np
 import pandas as pd   
 
@@ -76,4 +65,3 @@ print(gender_submission.shape)  # (418, 2)-----> (418, 1)
 #print(train.info())
 print(train.describe()) 
 
->>>>>>> b6273d91f0d2a8bda64398dfce3bbe5e3e083b07

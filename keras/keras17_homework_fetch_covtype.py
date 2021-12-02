@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import numpy as np 
 from sklearn.datasets import fetch_covtype
 from sklearn.model_selection import train_test_split
@@ -183,26 +182,23 @@ print(np.unique(y))    # [1 2 3 4 5 6 7]     --->다중분류임을 알 수 있�
 
 #(x)  앞에서부터 빈자리 채워줌
 
-''' 
+
 from tensorflow.keras.utils import to_categorical
 y = to_categorical(y)   #One Hot Encoding
 print(y)
 print(y.shape) # (581012, 8) 원핫인코딩     #categorical은 앞에 0부터 시작 그래서 8로 나옴
-'''
+
 
 #1)  
 # sklearn
 
-'''
 import tensorflow as tf
 
 from sklearn.preprocessing import OneHotEncoder
 ohe = OneHotEncoder(sparse=False)  #if sparse = True면 metrics로 출력, False면 array로 출력
 y = ohe.fit_transform(y.reshape(-1,1))  #1부터 시작 ~ -1즉 배열 끝까지 출력!...
 print(y.shape)  # (581012, 7)
-'''
 
-'''
 744/744 [==============================] - 1s 753us/step - loss: 0.6517 - accuracy: 0.7165 - val_loss: 0.6519 - val_accuracy: 0.7160
 3632/3632 [==============================] - 1s 359us/step - loss: 0.6514 - accuracy: 0.7181
 loss:  [0.6513694524765015, 0.7181311845779419]
@@ -288,7 +284,7 @@ results:  [[5.2866077e-01 4.6454406e-01 9.7635095e-08 2.4203764e-12 1.0460173e-0
   6.0462128e-07 1.4475231e-04]]
 
 
-'''
+
 
 
 
@@ -323,10 +319,9 @@ print(y_test[:11])
 print('results: ', results)
 
 
-'''
+
 Q) batch_size의 디폴트는 몇??  31.9978... = 32
 batch_size를 1로 했을 때 1epoch 당 371847
 batch_size를 완전히 지우고 돌렸을 때 1epoch당 11621
 371847/11621 = 31.9978... = 32
->>>>>>> b6273d91f0d2a8bda64398dfce3bbe5e3e083b07
 '''
