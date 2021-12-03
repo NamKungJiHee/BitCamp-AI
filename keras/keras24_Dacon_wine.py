@@ -24,9 +24,9 @@ submit_file = pd.read_csv(path + 'sample_submission.csv')
 #print(submit_file)  #[3231 rows x 2 columns
 
 
-#print(type(train))         #<class 'pandas.core.frame.DataFrame'>
-#print(train.info())    #object는 string (문자) 일단 문자형으로 생각.. so 비교해주려면 문자를 숫자루 변환시켜줘야함
-#print(train.describe())   #pandas는 변수.describe /  sklearn에서는 변수.DESC
+#print(type(train))         
+#print(train.info())    
+#print(train.describe())  
 
 ##dtypes: float64(11), int64(2), object(1)
 
