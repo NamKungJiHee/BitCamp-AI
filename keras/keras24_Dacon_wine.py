@@ -90,10 +90,10 @@ test_file = scaler.transform(test_file)
 #2)모델
 
 input1 = Input(shape=(12,))
-dense1 = Dense(50)(input1)
-dense2 = Dense(40)(dense1)
-dense3 = Dense(30, activation = 'relu')(dense2)
-dense4 = Dense(30, activation = 'relu')(dense3)
+dense1 = Dense(50, activation = 'relu')(input1)
+dense2 = Dense(40, activation = 'relu')(dense1)
+dense3 = Dense(30)(dense2)
+dense4 = Dense(30)(dense3)
 output1 = Dense(5, activation='softmax')(dense4)
 model = Model(inputs=input1, outputs=output1)
 
@@ -102,7 +102,7 @@ model = Model(inputs=input1, outputs=output1)
 model.compile(loss='categorical_crossentropy', optimizer = 'adam', metrics=['accuracy'])
 
 es = EarlyStopping
-es = EarlyStopping(monitor = 'val_loss', patience = 10, mode = 'min', verbose=1, restore_best_weights=True) 
+es = EarlyStopping(monitor = 'val_loss', patience = 50, mode = 'min', verbose=1, restore_best_weights=True) 
 
 model.fit(x_train, y_train, epochs=100, validation_split=0.2, callbacks=[es]) 
 
@@ -126,6 +126,7 @@ print('loss: ', loss)
 
 
 result = model.predict(test_file)
+print(result)
 result_int = np.argmax(result, axis =1).reshape(-1,1) + 4
 submit_file['quality'] = result_int
 
