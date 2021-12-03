@@ -4,13 +4,8 @@ from tensorflow.keras.models import Sequential,Model
 from tensorflow.keras.layers import Dense,Input
 from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.model_selection import train_test_split
-#from sklearn.metrics import r2_score, mean_squared_error
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, RobustScaler, MaxAbsScaler
-
-# def RMSE(y_test, y_pred): 
-#     return np.sqrt(mean_squared_error(y_test,y_pred)) #제곱근
-
 
 #1)데이터
 
@@ -38,13 +33,12 @@ submit_file = pd.read_csv(path + 'sample_submission.csv')
      #  dtype='object')
 
 
-#print(train.head(3))  #위에서부터 3개 출력
-#print(train.tail())   #아래서부터 5개출력
+
 #print(submit.columns)
 
 
 
-x = train.drop(['id','quality'], axis=1)  #컬럼(열) 삭제하려면 axis=1을 해야함.. 디폴트는 0 = 행삭제
+x = train.drop(['id','quality'], axis=1) 
 #print(x.columns)
 
 test_file = test_file.drop(['id'], axis=1)
@@ -91,17 +85,10 @@ scaler.fit(x_train)
 
 x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test)
-
+test_file = scaler.transform(test_file)
 
 #2)모델
-'''
-model = Sequential()
-model.add(Dense(10, input_dim = 12))
-model.add(Dense(20))
-model.add(Dense(30))
-model.add(Dense(30))
-model.add(Dense(5,activation='softmax'))
-'''
+
 input1 = Input(shape=(12,))
 dense1 = Dense(50)(input1)
 dense2 = Dense(40)(dense1)
@@ -134,6 +121,7 @@ print('loss: ', loss)
 
 # loss:  [1.00103759765625, 0.5687789916992188]
 
+# loss:  [0.9904183149337769, 0.5687789916992188]
 ###================================================== 제출용
 
 
@@ -141,6 +129,6 @@ result = model.predict(test_file)
 result_int = np.argmax(result, axis =1).reshape(-1,1) + 4
 submit_file['quality'] = result_int
 
-#print(submit_file[:10])
+# argmax: 원핫인코딩된 데이터를 결과데이터에 넣을때 다시 숫자로, 되돌려 주는 편리한 기능을 제공해주는 함수
 
 submit_file.to_csv( path + "submitfile1.csv", index=False)  # 디폴트: 기본으로 index가 생성됨 / if index= false하면 인덱스 생성x
