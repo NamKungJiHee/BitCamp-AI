@@ -13,7 +13,7 @@ def RMSE(y_test, y_pred):
 
 
 #1)데이터
-path = "./_data/bike/"      #.지금 현재 작업 공간   / ..이전
+path = "../_data/kaggle/bike/"      #.지금 현재 작업 공간   / ..이전
 
 
 train = pd.read_csv(path + 'train.csv')
