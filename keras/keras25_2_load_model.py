@@ -22,7 +22,7 @@ model.save("./_save/keras25_1_save_model.h5")
 '''
 
 model = load_model('./_save/keras25_1_save_model.h5')
-model.summary()
+#model.summary()
 
 
 

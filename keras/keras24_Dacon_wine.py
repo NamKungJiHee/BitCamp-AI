@@ -127,7 +127,7 @@ print('loss: ', loss)
 
 result = model.predict(test_file)
 print(result)
-result_int = np.argmax(result, axis =1).reshape(-1,1) + 4
+result_int = np.argmax(result, axis =1).reshape(-1,1) + 4 # 결과를 열로 뽑겠따!
 submit_file['quality'] = result_int
 
 # argmax: 원핫인코딩된 데이터를 결과데이터에 넣을때 다시 숫자로, 되돌려 주는 편리한 기능을 제공해주는 함수
