@@ -2,8 +2,9 @@ from sklearn.datasets import fetch_covtype
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, RobustScaler, MaxAbsScaler
 from sklearn.model_selection import train_test_split
 import numpy as np
-from tensorflow.keras.models import Sequential,Model
+from tensorflow.keras.models import Sequential,Model,load_model
 from tensorflow.keras.layers import Dense,Input
+from tensorflow.keras.callbacks import EarlyStopping
 
 datasets = fetch_covtype()
 
@@ -21,15 +22,15 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.8, shuffl
 
 #scaler = MinMaxScaler()
 #scaler = StandardScaler()
-#scaler = RobustScaler()
-scaler = MaxAbsScaler()
+scaler = RobustScaler()
+#scaler = MaxAbsScaler()
 
 scaler.fit(x_train)  
 x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test)
 
 #2) 모델링
-
+"""
 input1 = Input(shape=(54,))  
 dense1 = Dense(10,activation = 'relu')(input1)  
 dense2 = Dense(10)(dense1)   
@@ -37,7 +38,7 @@ dense3 = Dense(10,activation = 'relu')(dense2)
 dense4 = Dense(10)(dense3)
 output1 = Dense(7,activation = 'softmax')(dense4)
 model = Model(inputs=input1, outputs=output1) 
-
+"""
 '''
 model = Sequential()
 model.add(Dense(10, activation= 'relu', input_dim = 54))
@@ -46,22 +47,30 @@ model.add(Dense(10, activation = 'relu'))
 model.add(Dense(10))
 model.add(Dense(7, activation = 'softmax'))
 '''
+model = load_model("./_save/keras_06_fetch_covtype_save_model.h5")
 
+#model.summary()
 
-model.summary()
 
 #3) 캄파일, 훈련
-
+"""
 model.compile(loss= 'categorical_crossentropy', optimizer = 'adam', metrics=['accuracy'])
 
-# es = EarlyStopping(monitor='val_loss', patience=50, mode='min', verbose=1, restore_best_weights=True)
+es= EarlyStopping
+es = EarlyStopping(monitor='val_loss', patience=50, mode='min', verbose=1, restore_best_weights=True)
 
-model.fit(x_train, y_train, epochs = 100, batch_size=500, validation_split= 0.2) #callbacks=[es])  
+model.fit(x_train, y_train, epochs = 10000, batch_size=500, validation_split= 0.2,callbacks=[es])  
+
+model.save("./_save/keras_06_fetch_covtype_save_model.h5")
+"""
 
 #4) 평가, 예측
 
 loss= model.evaluate(x_test, y_test)
 print('loss: ', loss)
+
+# loss:  [0.5053121447563171, 0.7874409556388855]
+
 
 """
 ##################################### relu 적용 후 

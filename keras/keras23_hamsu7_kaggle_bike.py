@@ -2,10 +2,11 @@ from sklearn.datasets import fetch_covtype
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, RobustScaler, MaxAbsScaler
 from sklearn.model_selection import train_test_split
 import numpy as np
-from tensorflow.keras.models import Sequential,Model
+from tensorflow.keras.models import Sequential,Model,load_model
 from tensorflow.keras.layers import Dense,Input
 import pandas as pd  
 from sklearn.metrics import r2_score, mean_squared_error
+from tensorflow.python.keras.callbacks import EarlyStopping
 
 
 def RMSE(y_test, y_pred): 
@@ -13,7 +14,7 @@ def RMSE(y_test, y_pred):
 
 
 #1)데이터
-path = "./_data/bike/"      #.지금 현재 작업 공간   / ..이전
+path = "../_data/kaggle/bike/"      #.지금 현재 작업 공간   / ..이전
 
 
 train = pd.read_csv(path + 'train.csv')
@@ -49,14 +50,17 @@ test_file = scaler.transform(test_file)
 
 #2)모델
 
-
+"""
 input1 = Input(shape=(8,))  
-dense1 = Dense(10,activation = 'relu')(input1)  
-dense2 = Dense(20)(dense1)   
+dense1 = Dense(50,activation = 'relu')(input1)  
+dense2 = Dense(40)(dense1)   
 dense3 = Dense(30)(dense2)
-output1 = Dense(1)(dense3)
+dense4 = Dense(30)(dense3)
+dense5 = Dense(30)(dense4)
+output1 = Dense(1)(dense5)
 model = Model(inputs=input1, outputs=output1) 
-
+"""
+model = load_model("./_save/keras_07_kaggle_bike_save_model.h5")
 
 '''
 model = Sequential()
@@ -65,16 +69,21 @@ model.add(Dense(20))
 model.add(Dense(30))
 model.add(Dense(1))
 '''
-
+#model = load_model("./_save/keras_07_kaggle_bike_save_model.h5")
 
 #model.summary()
 
 #3)컴파일, 훈련
+"""
 model.compile(loss='mse', optimizer='adam')
 
-#es = EarlyStopping(monitor = 'val_loss', patience = 100, mode = 'min', verbose=1, restore_best_weights=True) 
+es=EarlyStopping
+es = EarlyStopping(monitor = 'val_loss', patience = 100, mode = 'min', verbose=1, restore_best_weights=True) 
 
-model.fit(x_train, y_train, epochs=100, validation_split=0.2) 
+model.fit(x_train, y_train, epochs=10000, validation_split=0.2,callbacks=[es]) 
+
+model.save("./_save/keras_07_kaggle_bike_save_model.h5")
+"""
 
 #4)평가, 예측
 loss= model.evaluate(x_test, y_test)
@@ -88,6 +97,10 @@ print("r2: ", r2)
 rmse = RMSE(y_test, y_pred)
 print("RMSE: ", rmse)  
 
+
+#loss:  1.3557466268539429
+#r2:  0.3081351974498143
+#RMSE:  1.1643653860767347
 
 """
 
@@ -167,6 +180,6 @@ results = model.predict(test_file)
 
 submit_file['count'] = results
 
-print(submit_file[:10])
+#print(submit_file[:10])
 
 submit_file.to_csv( path + "submitfile.csv", index=False)

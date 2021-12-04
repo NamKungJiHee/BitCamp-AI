@@ -2,8 +2,9 @@ from sklearn.datasets import load_wine
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, RobustScaler, MaxAbsScaler
 from sklearn.model_selection import train_test_split
 import numpy as np
-from tensorflow.keras.models import Sequential,Model
+from tensorflow.keras.models import Sequential,Model,load_model
 from tensorflow.keras.layers import Dense,Input
+from tensorflow.keras.callbacks import EarlyStopping
 
 #1) 데이터
 datasets = load_wine()
@@ -34,7 +35,7 @@ x_test = scaler.transform(x_test) #x_train에 맞는 비율로 들어가있움
 
 
 #2) 모델구성
-
+"""
 input1 = Input(shape=(13,))  
 dense1 = Dense(10)(input1)  
 dense2 = Dense(30)(dense1)   
@@ -42,7 +43,7 @@ dense3 = Dense(40,activation = 'relu')(dense2)
 dense4 = Dense(50,activation = 'relu')(dense3)
 output1 = Dense(3,activation = 'softmax')(dense4)
 model = Model(inputs=input1, outputs=output1) 
-
+"""
 
 '''
 model = Sequential()
@@ -52,15 +53,20 @@ model.add(Dense(40, activation= 'relu'))
 model.add(Dense(50, activation= 'relu'))
 model.add(Dense(3, activation = 'softmax'))
 '''
+model = load_model("./_save/keras_05_wine_save_model.h5")
 
-model.summary()
+#model.summary()
 
 #3) 컴파일, 훈련
+"""
 model.compile(loss='categorical_crossentropy', optimizer = 'adam', metrics=['accuracy'])   # accuracy는 훈련에 영향 안끼친당
 
-#es = EarlyStopping(monitor = 'val_loss', patience = 10, mode = 'min', verbose=1, restore_best_weights=True) 
+es = EarlyStopping(monitor = 'val_loss', patience = 10, mode = 'min', verbose=1, restore_best_weights=True) 
 
-model.fit(x_train, y_train, epochs=100, batch_size=1, verbose=1, validation_split=0.2) #callbacks=[es])
+model.fit(x_train, y_train, epochs=10000, batch_size=1, verbose=1, validation_split=0.2,callbacks=[es])
+
+model.save("./_save/keras_05_wine_save_model.h5")
+"""
 
 #4) 평가, 예측
 
@@ -75,6 +81,11 @@ results=model.predict(x_test[:7])
 print(y_test[:7])  
 print(results)
 '''
+
+
+# loss:  0.01570259779691696
+# accuracy:  1.0
+
 
 """
 ##################################### relu 적용 후 

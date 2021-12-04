@@ -2,59 +2,54 @@ from sklearn.datasets import load_diabetes
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, RobustScaler, MaxAbsScaler
 import numpy as np
-from tensorflow.keras.models import Sequential,Model
+from tensorflow.keras.models import Sequential,Model,load_model
 from tensorflow.keras.layers import Dense,Input
+from tensorflow.keras.callbacks import EarlyStopping
 
 datasets = load_diabetes()
 x = datasets.data
 y = datasets.target
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, random_state=66)   #shuffle은 디폴트가 True
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.9, shuffle=True, random_state=66)   #shuffle은 디폴트가 True
 
-#scaler = MinMaxScaler()
+scaler = MinMaxScaler()
 #scaler = StandardScaler()
 #scaler = RobustScaler()
 #scaler = MaxAbsScaler()
 
-#scaler.fit(x_train)  # 어느 비율로 나눌지
-#x_train = scaler.transform(x_train)
-#x_test = scaler.transform(x_test) #x_train에 맞는 비율로 들어가있움
+scaler.fit(x_train) 
+x_train = scaler.transform(x_train)
+x_test = scaler.transform(x_test) 
 
 #print(x.shape)  # (442, 10)
 #print(y.shape)    # (442,)
 
 #2) 모델구성
-
+'''
 input1 = Input(shape=(10,))  
-dense1 = Dense(100)(input1)  
-dense2 = Dense(100)(dense1) 
-dense3 = Dense(100)(dense2)
-dense4 = Dense(100)(dense3)
-dense5 = Dense(50)(dense4)
-dense6 = Dense(10,activation = 'relu')(dense5)
-output1 = Dense(1,activation = 'relu')(dense6)
+dense1 = Dense(100,activation = 'relu')(input1)  
+dense2 = Dense(80,activation = 'relu')(dense1) 
+dense3 = Dense(60)(dense2)
+dense4 = Dense(40)(dense3)
+dense5 = Dense(20)(dense4)
+output1 = Dense(1)(dense5)
 model = Model(inputs=input1, outputs=output1)
-
-
-
-'''
-model = Sequential()
-model.add(Dense(100,input_dim=10))
-model.add(Dense(100))
-model.add(Dense(100))
-model.add(Dense(100))
-model.add(Dense(50))
-model.add(Dense(10, activation = 'relu'))
-model.add(Dense(1, activation = 'relu'))
 '''
 
+model = load_model("./_save/keras_02_diabets_save_model.h5")
 
-model.summary()
+#model.summary()
 
 #3) 컴파일, 훈련
-
+'''
 model.compile(loss='mse', optimizer='adam')
-model.fit(x_train, y_train, epochs=100, batch_size=1, validation_split=0.2)
+
+es = EarlyStopping
+es = EarlyStopping(monitor='val_loss', patience=100, mode = 'min', verbose=1,restore_best_weights=True)
+model.fit(x_train, y_train, epochs=10000, batch_size=5, validation_split=0.11111111, callbacks=[es])
+model.save("./_save/keras_02_diabets_save_model.h5")
+'''
+
 
 #4) 평가, 예측
 
@@ -66,6 +61,13 @@ y_predict = model.predict(x_test)
 from sklearn.metrics import r2_score
 r2 = r2_score(y_test, y_predict) 
 print('r2스코어 : ', r2)
+
+
+
+# loss:  3884.536865234375
+# r2스코어 :  0.511911880856528
+
+
 
 
 """

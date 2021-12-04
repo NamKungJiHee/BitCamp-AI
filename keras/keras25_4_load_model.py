@@ -25,7 +25,8 @@ model.summary()
 model.save("./_save/keras25_1_save_model.h5")  
 '''
 #model = load_model("./_save/keras25_1_save_model.h5")#  --> 모델 구성까자만 저장
-model = load_model("./_save/keras25_3_save_model.h5")
+model = load_model("./_save/keras25_3_save_model.h5")   # load_model은 저장된 값을 불러오는 함수! 
+                                                        # 이미 fit 단계까지 save됬으므로 그 앞에까지는 그냥 주석처리해도 ok!
 
 '''
 #3. 컴파일, 훈련
