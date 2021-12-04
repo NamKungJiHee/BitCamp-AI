@@ -102,9 +102,9 @@ model = Model(inputs=input1, outputs=output1)
 model.compile(loss='categorical_crossentropy', optimizer = 'adam', metrics=['accuracy'])
 
 es = EarlyStopping
-es = EarlyStopping(monitor = 'val_loss', patience = 50, mode = 'min', verbose=1, restore_best_weights=True) 
+es = EarlyStopping(monitor = 'val_loss', patience = 100, mode = 'min', verbose=1, restore_best_weights=True) 
 
-model.fit(x_train, y_train, epochs=100, validation_split=0.2, callbacks=[es]) 
+model.fit(x_train, y_train, epochs=10000, batch_size=5, validation_split=0.25, callbacks=[es]) 
 
 #4)평가, 예측
 loss= model.evaluate(x_test, y_test)
@@ -126,10 +126,10 @@ print('loss: ', loss)
 
 
 result = model.predict(test_file)
-print(result)
+#print(result)
 result_int = np.argmax(result, axis =1).reshape(-1,1) + 4 # 결과를 열로 뽑겠따!
 submit_file['quality'] = result_int
 
 # argmax: 원핫인코딩된 데이터를 결과데이터에 넣을때 다시 숫자로, 되돌려 주는 편리한 기능을 제공해주는 함수
-
-submit_file.to_csv( path + "submitfile1.csv", index=False)  # 디폴트: 기본으로 index가 생성됨 / if index= false하면 인덱스 생성x
+acc = str(round(loss[1],4)).replace(".","_")
+submit_file.to_csv( path +f"result/accuracy_{acc}.csv", index=False)  # 디폴트: 기본으로 index가 생성됨 / if index= false하면 인덱스 생성x
