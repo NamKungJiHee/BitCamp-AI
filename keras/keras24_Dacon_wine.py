@@ -90,11 +90,13 @@ test_file = scaler.transform(test_file)
 #2)모델
 
 input1 = Input(shape=(12,))
-dense1 = Dense(50, activation = 'relu')(input1)
-dense2 = Dense(40, activation = 'relu')(dense1)
-dense3 = Dense(30)(dense2)
-dense4 = Dense(30)(dense3)
-output1 = Dense(5, activation='softmax')(dense4)
+dense1 = Dense(40)(input1)
+dense2 = Dense(60, activation = 'relu')(dense1)
+dense3 = Dense(80, activation = 'relu')(dense2)
+dense4 = Dense(60)(dense3)
+dense5 = Dense(40)(dense4)
+dense6 = Dense(20)(dense5)
+output1 = Dense(5, activation='softmax')(dense6)
 model = Model(inputs=input1, outputs=output1)
 
 
@@ -130,6 +132,6 @@ result = model.predict(test_file)
 result_int = np.argmax(result, axis =1).reshape(-1,1) + 4 # 결과를 열로 뽑겠따!
 submit_file['quality'] = result_int
 
-# argmax: 원핫인코딩된 데이터를 결과데이터에 넣을때 다시 숫자로, 되돌려 주는 편리한 기능을 제공해주는 함수
+# argmax: 원핫인코딩된 데이터를 결과데이터에 넣을때 다시 숫자로, 되돌려 주는 편리한 기능을 제공해주는 함수 / 확률을 다시 change
 acc = str(round(loss[1],4)).replace(".","_")
 submit_file.to_csv( path +f"result/accuracy_{acc}.csv", index=False)  # 디폴트: 기본으로 index가 생성됨 / if index= false하면 인덱스 생성x

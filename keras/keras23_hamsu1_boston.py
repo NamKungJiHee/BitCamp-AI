@@ -45,7 +45,6 @@ model = load_model("./_save/keras_01_boston_save_model.h5")
 '''
 model.compile(loss='mse', optimizer='adam')
 model.fit(x_train, y_train, epochs=100, batch_size=1, validation_split=0.2)
-
 model.save("./_save/keras_01_boston_save_model.h5")  
 '''
 
@@ -86,17 +85,8 @@ dense_4 (Dense)              (None, 1)                 11
 Total params: 481
 Trainable params: 481
 Non-trainable params: 0
-
-
 loss:  28.87620735168457
 r2스코어 :  0.6504814589623661
-
-
-
-
-
-
-
 Model: "Sequential"
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -113,11 +103,4 @@ dense_4 (Dense)              (None, 1)                 11
 Total params: 481
 Trainable params: 481
 Non-trainable params: 0
-
-
-
-
-
-
-
 """
