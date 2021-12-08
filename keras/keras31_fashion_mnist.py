@@ -1,5 +1,5 @@
 import numpy as np
-from tensorflow.keras.datasets import mnist 
+from tensorflow.keras.datasets import fashion_mnist 
 from tensorflow.keras.models import Sequential,Model,load_model
 from tensorflow.keras.layers import Dense, Input, Dropout,Conv2D, Flatten
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, RobustScaler, MaxAbsScaler
@@ -8,32 +8,29 @@ from tensorflow.keras.callbacks import EarlyStopping,ModelCheckpoint
 from sklearn.model_selection import train_test_split
 
 
-(x_train, y_train), (x_test, y_test) = mnist.load_data()
+(x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
 #print(x_train.shape, y_train.shape)    # (60000, 28, 28) (60000,)  # 흑백이미지   6만장의 이미지가 28,28이다...
 #print(x_test.shape, y_test.shape)      # (10000, 28, 28) (10000,)  
 
 x_train = x_train.reshape(60000,28,28,1)           #(60000,28,14,2)도 가능 / reshape= 위에 train,test의 값과 맞춰주는것!
-x_test = x_test.reshape(10000,28,28,1)             # ex) (60000, 28, 28) 가로*세로*장수 ==>   (60000,28,28,1)  
+x_test = x_test.reshape(10000,28,28,1)             
 #print(x_train.shape)     # (60000, 28, 28, 1)
 
-
-#print(np.unique(y_train, return_counts=True))   # [0 1 2 3 4 5 6 7 8 9]  return_counts=True) 하면 pandas의 value.counts와 같은 기능
-
+#print(np.unique(y_train, return_counts=True))   
 x= x_train
 
 from tensorflow.keras.utils import to_categorical
 y_train = to_categorical(y_train)   
 #print(y)
-print(y_train.shape)   #(60000, 10)
+#print(y_train.shape)   #(60000, 10)
 y_test = to_categorical(y_test)
-print(y_test.shape)
+#print(y_test.shape)
 
 
 model = Sequential()
-model.add(Conv2D(10,kernel_size=(3,3), input_shape=(28,28,1)))  
-model.add(Conv2D(10,(3,3), activation='relu'))
-model.add(Dropout(0.2))
-model.add(Conv2D(10,(2,2), activation='relu'))
+model.add(Conv2D(50,kernel_size=(3,3), input_shape=(28,28,1)))  
+model.add(Conv2D(40,(3,3), activation='relu'))
+model.add(Conv2D(30,(2,2), activation='relu'))
 model.add(Dropout(0.2))
 model.add(Conv2D(10,(2,2), activation='relu'))
 model.add(Dropout(0.2))
@@ -57,5 +54,5 @@ model.fit(x_train, y_train, epochs=100, batch_size=1000, validation_split=0.25, 
 loss= model.evaluate(x_test, y_test)
 print('loss: ', loss)
 
-# loss:  [0.06073908135294914, 0.9817000031471252]
+# loss:  [0.3179081678390503, 0.8942999839782715]
 

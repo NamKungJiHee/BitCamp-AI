@@ -90,7 +90,7 @@ test_file = scaler.transform(test_file)
 #2)모델
 
 input1 = Input(shape=(12,))
-dense1 = Dense(40)(input1)
+dense1 = Dense(600)(input1)
 dense2 = Dense(60, activation = 'relu')(dense1)
 dense3 = Dense(80, activation = 'relu')(dense2)
 dense4 = Dense(60)(dense3)
