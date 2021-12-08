@@ -40,12 +40,12 @@ model.add(Conv2D(7, (2,2), activation = 'relu'))     # ===> (2,2,7)가 된다
 '''
 
 #strides =1 이 디폴트 
-# padding = same : 둘러싼다 / padding = valid가 디폴트
+# padding = same : 둘러싼다 / padding = valid가 디폴트   : ex) 사진테두리 부분은 한번밖에 못돌리므로 padding을 써줌으로써 테두리부분도 여러번 돌릴수 있게 해준다!
 # maxpooling = conv 다음에 해줘야함! conv해준거를 토대로 값이 높은 값들만 뽑아서 다음 conv로 넘겨준다
-# 그래서 maxpooling을 하고 나면 반으로 훅 준다!  ((2,2)가 디폴트)
+# 그래서 maxpooling을 하고 나면 반으로 훅 준다!  ((2,2)가 디폴트)   ---> 줄여주면 속도도 더 빨라진다는 장점!
 
 model = Sequential()
-model.add(Conv2D(10, kernel_size=(2,2), strides=1,        
+model.add(Conv2D(10, kernel_size=(5,5), strides=1,        
                  padding='same', input_shape=(10, 10, 1)))     
 model.add(MaxPooling2D(3))    # ((2,2)가 디폴트)   = dropout가 비슷
 model.add(Conv2D(5, (2,2), activation = 'relu'))     # 7,7,5       

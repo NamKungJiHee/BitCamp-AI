@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd  
 from tensorflow.keras.models import Sequential,Model
-from tensorflow.keras.layers import Dense,Input
+from tensorflow.keras.layers import Dense,Input, Dropout
 from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
@@ -90,12 +90,13 @@ test_file = scaler.transform(test_file)
 #2)모델
 
 input1 = Input(shape=(12,))
-dense1 = Dense(600)(input1)
-dense2 = Dense(60, activation = 'relu')(dense1)
+dense1 = Dense(100)(input1)
+dense2 = Dense(80, activation = 'relu')(dense1)
 dense3 = Dense(80, activation = 'relu')(dense2)
-dense4 = Dense(60)(dense3)
+dense4 = Dense(40)(dense3)
 dense5 = Dense(40)(dense4)
-dense6 = Dense(20)(dense5)
+drop1 = Dropout(0.2)(dense5)
+dense6 = Dense(20)(drop1)
 output1 = Dense(5, activation='softmax')(dense6)
 model = Model(inputs=input1, outputs=output1)
 
