@@ -1,4 +1,4 @@
-from sklearn.datasets import load_diabetes
+from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, RobustScaler, MaxAbsScaler
 import numpy as np
@@ -6,7 +6,7 @@ from tensorflow.keras.models import Sequential,Model,load_model
 from tensorflow.keras.layers import Dense,Input
 from tensorflow.keras.callbacks import EarlyStopping
 
-datasets = load_diabetes()
+datasets = load_breast_cancer()
 x = datasets.data
 y = datasets.target
 
@@ -26,7 +26,7 @@ x_test = scaler.transform(x_test) #x_train에 맞는 비율로 들어가있움
 
 #2) 모델구성
 '''
-input1 = Input(shape=(10,))  
+input1 = Input(shape=(30,))  
 dense1 = Dense(120,activation='relu')(input1)  
 dense2 = Dense(100, activation='relu')(dense1)   
 dense3 = Dense(80)(dense2)

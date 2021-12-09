@@ -1,4 +1,3 @@
-from sklearn.datasets import fetch_covtype
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, RobustScaler, MaxAbsScaler
 from sklearn.model_selection import train_test_split
 import numpy as np

@@ -27,10 +27,10 @@ y_train = to_categorical(y_train)
 y_test = to_categorical(y_test)
 #print(y_test.shape)
 
-scaler= StandardScaler()
-x_train= x_train.reshape(50000,-1)      # 4차원 (50000,32,32,3)을 가로로 1자로 쫙펴준다.  행 세로 열 가로   (50000,3072)
-x_test = x_test.reshape(10000,-1)
-
+scaler= StandardScaler()              # scaler는 2차원만을 받아들이기 때문에 3,4차원에서 scaler를 쓰고 싶다면 2차원으로 먼저 바꿔줘야한다.
+x_train= x_train.reshape(50000,-1)    # 4차원 (50000,32,32,3)을 가로로 1자로 쫙펴준다.  행 세로 열 가로   (50000,3072)
+x_test = x_test.reshape(10000,-1)     #255로 나누는게 minmax쓴것과 비슷! (bc 이미지는 최대가 255이므로)
+                                      # reshape = 값(내용물)과 순서가 변하지 않음
 scaler.fit(x_train)
 x_train=scaler.transform(x_train)
 x_test = scaler.transform(x_test)

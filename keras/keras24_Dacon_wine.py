@@ -90,14 +90,15 @@ test_file = scaler.transform(test_file)
 #2)모델
 
 input1 = Input(shape=(12,))
-dense1 = Dense(30)(input1)
-dense2 = Dense(50, activation = 'relu')(dense1)
-dense3 = Dense(70, activation = 'relu')(dense2)
-drop1 = Dropout(0.5)(dense3)
-dense4 = Dense(10)(drop1)
-drop2 = Dropout(0.2)(dense4)
-dense6 = Dense(5)(drop2)
-output1 = Dense(5, activation='softmax')(dense6)
+dense1 = Dense(20)(input1)
+dense2 = Dense(40, activation = 'relu')(dense1)
+drop1 = Dropout(0.1)(dense2)
+dense3 = Dense(60, activation = 'sigmoid')(dense2)
+drop2 = Dropout(0.2)(dense3)
+dense4 = Dense(80, activation = 'relu')(drop2)
+dense5 = Dense(100)(dense4)
+drop2 = Dropout(0.2)(dense5)
+output1 = Dense(5, activation='softmax')(drop2)
 model = Model(inputs=input1, outputs=output1)
 
 
