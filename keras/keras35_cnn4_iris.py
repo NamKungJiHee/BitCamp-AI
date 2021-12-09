@@ -29,7 +29,7 @@ x_test = scaler.transform(x_test).reshape(len(x_test),2,2,1)
 
 
 model = Sequential()
-model.add(Conv2D(140, kernel_size=(3,3),padding ='same', strides=1, input_shape = (2,2,1)))
+model.add(Conv2D(140, kernel_size=(3,3),padding ='same', strides=1, input_shape = (2,2,1), activation='relu'))
 model.add(MaxPooling2D())
 model.add(Conv2D(120,(2,2),padding ='same', activation='relu'))
 model.add(Conv2D(100,(2,2),padding ='same', activation='relu'))
