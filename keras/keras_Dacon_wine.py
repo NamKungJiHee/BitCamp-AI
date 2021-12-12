@@ -53,7 +53,7 @@ model4 = HistGradientBoostingClassifier(random_state =66)
 voting_model = VotingClassifier(estimators=[ ('RandomForestClassifier', model1), ('GradientBoostingClassifier', model2)
                                             ,('ExtraTreesClassifier', model3),('HistGradientBoostingClassifier', model4)], voting='hard')
 
-classifiers = [model1, model2,model3,model4,model5]
+classifiers = [model1, model2,model3,model4]#model5
 
 for classifier in classifiers:
     classifier.fit(x_train, y_train)
