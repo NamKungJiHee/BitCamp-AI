@@ -20,7 +20,7 @@ submit_file = pd.read_csv(path + 'sample_submission.csv')
 y = train['quality']
 x = train.drop(['id', 'quality'], axis=1)  
 
-test_file = test_file.drop(['id'], axis=1) # ,  'sulphates' 'citric acid', 'pH',
+test_file = test_file.drop(['id'], axis=1) # 'sulphates' 'citric acid', 'pH',
 y = y.to_numpy()
 
 le = LabelEncoder()
