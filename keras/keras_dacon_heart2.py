@@ -69,3 +69,5 @@ results = results.round(0).astype(int)
 #print(results[:5])
 submit_file['target'] = results
 submit_file.to_csv(path + "subfile.csv", index=False)
+
+# f1 스코어 0.8205128205128205 
