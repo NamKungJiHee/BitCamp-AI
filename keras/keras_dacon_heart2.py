@@ -14,35 +14,31 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, confu
 
 
 path = "../_data/dacon/heart/"
+
 train = pd.read_csv(path + 'train.csv')
-
 test_file = pd.read_csv(path + 'test.csv')
-
 submit_file = pd.read_csv(path + 'sample_submission.csv')  
 
-y = train['target']
 x = train.drop(['id', 'target'], axis=1)  
-
-#print(x)
-#print(x.shape, y.shape) # (151, 13) (151,)
-#print(np.unique(y))  # [0 1]
-
+y = train['target']
 test_file = test_file.drop(['id'], axis=1) 
-#y = y.to_numpy()
+
+#print(x.shape, y.shape) # (151, 13) (151,)
+print(np.unique(y, return_counts=True))  # [0 1]    # 68, 83  각각 0과 1의 갯수 / pandas는 value_counts
 
 #print(train.info())    
 #print(train.describe())  
 
-x_train, x_test, y_train, y_test = train_test_split(x, y,
-                                                    train_size=0.8, shuffle=True, random_state=66)
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.8, shuffle=True, random_state=66)
 
 
 model = Sequential()
-model.add(Dense(90, input_dim=13))
-model.add(Dense(70))
-model.add(Dense(50))
-model.add(Dense(30))
-model.add(Dense(10))
+model.add(Dense(150,activation= 'relu' ,input_dim=13))
+model.add(Dense(120, activation = 'relu'))
+model.add(Dense(100))
+model.add(Dropout(0.2)) 
+model.add(Dense(80))
+model.add(Dense(60))
 model.add(Dense(1,activation='sigmoid'))  # sigmoid는 output이 1개!
 
 
@@ -53,7 +49,7 @@ model.compile(loss='binary_crossentropy', optimizer = 'adam')
 es = EarlyStopping
 es = EarlyStopping(monitor = 'val_loss', patience = 100, mode = 'min', verbose=1, restore_best_weights=True) 
 
-model.fit(x_train, y_train, epochs=10000, batch_size=100, validation_split=0.25, callbacks=[es]) 
+model.fit(x_train, y_train, epochs=10000, batch_size=1, validation_split=0.25, callbacks=[es]) 
 
 loss = model.evaluate(x_test, y_test)
 y_pred = model.predict(x_test)
