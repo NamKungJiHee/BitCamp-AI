@@ -57,7 +57,7 @@ model.fit(x_train, y_train, epochs=10000, batch_size=100, validation_split=0.25,
 
 loss = model.evaluate(x_test, y_test)
 y_pred = model.predict(x_test)
-y_pred = y_pred.round(0).astype(int)   # argmax효과
+y_pred = y_pred.round(0).astype(int)   # argmax효과/ astype() = 타입바꿔주기 ex) float, int
 f1 = f1_score(y_pred, y_test)
 print('f1 스코어', f1)
 
