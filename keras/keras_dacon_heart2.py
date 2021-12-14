@@ -33,12 +33,11 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.8, shuffl
 
 
 model = Sequential()
-model.add(Dense(150,activation= 'relu' ,input_dim=13))
-model.add(Dense(120, activation = 'relu'))
-model.add(Dense(100))
-model.add(Dropout(0.2)) 
-model.add(Dense(80))
-model.add(Dense(60))
+model.add(Dense(100,activation= 'relu' ,input_dim=13))
+model.add(Dense(90,activation='relu'))
+model.add(Dense(80)) 
+model.add(Dropout(0.5)) 
+model.add(Dense(70,activation='relu')) 
 model.add(Dense(1,activation='sigmoid'))  # sigmoid는 output이 1개!
 
 
@@ -47,7 +46,7 @@ model.add(Dense(1,activation='sigmoid'))  # sigmoid는 output이 1개!
 model.compile(loss='binary_crossentropy', optimizer = 'adam')
 
 es = EarlyStopping
-es = EarlyStopping(monitor = 'val_loss', patience = 100, mode = 'min', verbose=1, restore_best_weights=True) 
+es = EarlyStopping(monitor = 'val_loss', patience = 10, mode = 'min', verbose=1, restore_best_weights=True) 
 
 model.fit(x_train, y_train, epochs=10000, batch_size=1, validation_split=0.25, callbacks=[es]) 
 

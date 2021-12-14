@@ -53,7 +53,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, y,
                                                     train_size=0.8, shuffle=True, random_state=66)
 
 model = Sequential()
-model.add(Dense(100, input_dim=13))
+model.add(Dense(130, input_dim=13))
 model.add(Dense(70))
 model.add(Dense(50))
 model.add(Dense(30))
