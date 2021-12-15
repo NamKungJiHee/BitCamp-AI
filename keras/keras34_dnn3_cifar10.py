@@ -18,11 +18,12 @@ n = x_train.shape[0]
 x_train = x_train.reshape(n,-1)/255.           # /255.0 이 scaler의 역할을 해주는 것과 같음!
 
 m = x_test.shape[0]
-x_test = x_test.reshape(m,-1)/255.
-
+x_test = x_test.reshape(m,-1)/255
 
 y_train = to_categorical(y_train)
 y_test = to_categorical(y_test)
+
+
 
 
 #2) 모델링

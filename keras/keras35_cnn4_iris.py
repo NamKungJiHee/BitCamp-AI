@@ -42,7 +42,7 @@ model.add(Dense(3, activation = 'softmax'))
 
 
 #3. 컴파일
-model.compile(loss='mse', optimizer='adam')
+model.compile(loss='mse', optimizer='adam',metrics=['accuracy'])
 
 es = EarlyStopping(monitor='val_loss', patience=30, mode='min', restore_best_weights=True)
 
@@ -52,12 +52,11 @@ model.fit(x_train, y_train, epochs=1000, batch_size=1, validation_split=0.2, cal
 loss = model.evaluate(x_test,y_test)
 print("loss : ",loss)
 
-y_predict = model.predict(x_test)
-r2 = r2_score(y_test,y_predict)
-print("R2 : ",r2)
+# y_predict = model.predict(x_test)
+# r2 = r2_score(y_test,y_predict)
+# print("R2 : ",r2)
 
 
 """   
-loss :  0.017760252580046654
-R2 :  0.9214576303662464
+loss :  [0.039754826575517654, 0.9333333373069763]
 """

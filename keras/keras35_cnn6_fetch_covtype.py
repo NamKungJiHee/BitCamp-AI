@@ -44,7 +44,7 @@ model.add(Dense(7, activation='softmax'))
 
 #3) 컴파일, 훈련
 
-model.compile(loss='mse', optimizer='adam')
+model.compile(loss='mse', optimizer='adam',metrics=['accuracy'])
 
 es = EarlyStopping(monitor='val_loss', patience=30, mode='min', restore_best_weights=True)
 
@@ -54,9 +54,9 @@ model.fit(x_train, y_train, epochs=1000, batch_size=1000, validation_split=0.2, 
 loss = model.evaluate(x_test,y_test)
 print("loss : ",loss)
 
-y_predict = model.predict(x_test)
-r2 = r2_score(y_test,y_predict)
-print("R2 : ",r2)
+# y_predict = model.predict(x_test)
+# r2 = r2_score(y_test,y_predict)
+# print("R2 : ",r2)
 
 """  
 loss :  0.03378543630242348

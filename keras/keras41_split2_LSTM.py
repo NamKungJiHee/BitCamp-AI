@@ -26,9 +26,11 @@ y = bbb[:, 4]   # 행, 열
 
 x = x.reshape(96,4,1)
 
-ab = split_x(x_pred,4)
-x_pred = ab.reshape(7,4,1)
-print(x_pred.shape)  #(7,4,1)
+x_pred_ = split_x(x_pred,4)
+# print(x_pred_)
+print(x_pred_.shape)  #(7,4)
+x_pred_ = x_pred_.reshape(7,4,1)
+print(x_pred_) #(7,4,1)
 
 #모델구성 LSTM형식으로!
 model = Sequential()
@@ -40,12 +42,12 @@ model.add(Dense(1))
 
 #3. 컴파일, 훈련
 model.compile(loss='mae', optimizer= 'adam') 
-model.fit(x,y,epochs=100)  
+model.fit(x,y,epochs=10)  
 
 #4. 평가, 예측
 model.evaluate(x,y)
 
-x_predict = model.predict(x_pred)
+x_predict = model.predict(x_pred_)
 print(x_predict)
 
 
