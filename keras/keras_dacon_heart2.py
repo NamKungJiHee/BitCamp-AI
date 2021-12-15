@@ -33,10 +33,10 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.8, shuffl
 
 
 model = Sequential()
-model.add(Dense(100,activation= 'relu' ,input_dim=13))
+model.add(Dense(120,activation= 'relu' ,input_dim=13))
 model.add(Dense(90,activation='relu'))
-model.add(Dense(80)) 
-model.add(Dropout(0.5)) 
+model.add(Dense(70)) 
+model.add(Dropout(0.3)) 
 model.add(Dense(70,activation='relu')) 
 model.add(Dense(1,activation='sigmoid'))  # sigmoid는 output이 1개!
 
