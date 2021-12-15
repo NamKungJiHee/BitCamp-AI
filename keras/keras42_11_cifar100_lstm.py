@@ -51,7 +51,7 @@ loss = model.evaluate(x_test,y_test)
 
 """ 
 -LSTM-
-
+loss: 3.2097 - accuracy: 0.2342
 -CNN-
 loss:  [2.6724672317504883, 0.34599998593330383]
 -DNN-
