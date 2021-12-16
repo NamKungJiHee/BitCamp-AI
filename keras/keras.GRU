@@ -1,0 +1,10 @@
+GRU : LSTM의 구조를 조금 간단하게 개선한 모델 (활성화 함수는 sigmoid2번과 tanh 1번 사용됨)
+LSTM - forget, input, output 
+GRU - reset gate / update gate만 사용 + cell state, hidden state가 합쳐져 하나의 hidden state로 표현
+++  마지막 출력값에 활성화 함수를 적용하지 않음 (output gate가 없음)
+
+
+1) reset gate: 이전 상태를 얼마나 반영할지 --> sigmoid 연산
+2) update gate: 과거와 현재의 정보를 각각 얼마나 반영할지에 대한 비율을 구하는 것..(forget, input gate를 제어함) --> sigmoid 연산
+3) 연산결과 tanh 함수를 한번 거치게 됨
+---------------------------------------------------------------------------------------------------------------------------------------------
