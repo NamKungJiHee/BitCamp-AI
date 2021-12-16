@@ -12,11 +12,6 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 import csv
 
-path = "../_data/dacon/heart/"
-
-train = pd.read_csv(path + 'train.csv')
-test_file = pd.read_csv(path + 'test.csv')
-submit_file = pd.read_csv(path + 'sample_submission.csv') 
 # Model list
 def models(model):
     if model == 'knn':
@@ -42,7 +37,7 @@ def models(model):
     return mod
 
 ## Data load
-datapath = 'C:/Users/ImedisynRnD2/Desktop/KTH/기타/DaconHRV/dataset/'
+datapath = "../_data/dacon/heart/"
 train_data = pd.read_csv(datapath + 'train.csv').to_numpy()
 test_data = pd.read_csv(datapath + 'test.csv').to_numpy()
 
@@ -63,12 +58,11 @@ for model in tqdm(model_list, desc = 'Models are training and predicting ... '):
     pred = clf.predict(test_data[:,1:]) #마찬가지로 예측을 할 때에도 id를 제외하고 나머지 feature들로 예측
 
     #Make answer sheet
-    # savepath = datapath +  #정답지 저장 경로
-    # with open(savepath + '%s_answer.csv' % model_list[cnt], 'w', newline='') as f:
-    #     sheet = csv.writer(f)
-    #     sheet.writerow(['id', 'target'])
-    #     for idx, p in enumerate(pred):
-    #         sheet.writerow([idx+1, p])
-submit_file['target'] = results
-submit_file.to_csv(path + "subfile.csv", index=False)
+    savepath = datapath + '' #정답지 저장 경로
+    with open(savepath + '%s_answer.csv' % model_list[cnt], 'w', newline='') as f:
+        sheet = csv.writer(f)
+        sheet.writerow(['id', 'target'])
+        for idx, p in enumerate(pred):
+            sheet.writerow([idx+1, p])
+
     cnt += 1

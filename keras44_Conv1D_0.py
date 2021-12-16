@@ -1,9 +1,6 @@
 import numpy as np
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, SimpleRNN, Bidirectional
-
-# 소문자 - 함수 / 대문자 - 클래스
-# LSTM의 단방향의 한계(?)를 개선한 모델! = Bidrectional(양방향)- 이거는 방향성만 제시해주는 것이므로 무엇을 쓸건지 정의해줘야함!
+from tensorflow.keras.layers import Dense, SimpleRNN, Bidirectional,Conv1D,Flatten
 
 #1. 데이터
 x = np.array([[1,2,3],
@@ -20,8 +17,10 @@ x = x.reshape(4, 3, 1) # 4행 3열 1개씩 자르겠다 ([[1],[2],[3]],...)  ---
 #2. 모델구성
 model = Sequential()
 #model.add(SimpleRNN(80, input_shape = (3,1),return_sequences=True)) 
-model.add(Bidirectional(SimpleRNN(10),input_shape=(3,1)))  # SimpleRNN을 양방향으로 돌리겠다.
-model.add(Dense(60, activation = 'relu'))
+#model.add(Bidirectional(SimpleRNN(10),input_shape=(3,1)))  # SimpleRNN을 양방향으로 돌리겠다.
+model.add(Conv1D(10, 2, input_shape= (3,1)))  # 2: 2가 kernel size.. 2씩 묶어주겠다. & step / 10: filter
+model.add(Dense(60, activation = 'relu')) 
+model.add(Flatten())
 model.add(Dense(1))
 
 model.summary()
@@ -31,20 +30,23 @@ Model: "sequential"
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
-bidirectional (Bidirectional (None, 20)                240
+conv1d (Conv1D)              (None, 2, 10)             30
 _________________________________________________________________
-dense (Dense)                (None, 60)                1260
+dense (Dense)                (None, 2, 60)             660
 _________________________________________________________________
-dense_1 (Dense)              (None, 1)                 61
+flatten (Flatten)            (None, 120)               0
+_________________________________________________________________
+dense_1 (Dense)              (None, 1)                 121
 =================================================================
-Total params: 1,561
-Trainable params: 1,561
+Total params: 811
+Trainable params: 811
+Non-trainable params: 0
 """
 #3. 컴파일, 훈련
 # model.compile(loss='mae', optimizer= 'adam') 
 # model.fit(x,y,epochs=100)
 
-# #4. 평가, 예측
+# # #4. 평가, 예측
 # model.evaluate(x,y)
 # result = model.predict([[[5],[6],[7]]])
 # print(result)
