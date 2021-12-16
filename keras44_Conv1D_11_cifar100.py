@@ -16,8 +16,8 @@ from pandas import get_dummies
 
 # print(np.unique(y_train))  # 100개
 
-y_train = to_categorical(y_train)
-y_test = to_categorical(y_test)
+y_train = to_categorical(y_train) # get_dummies의 경우: reshape를 해줘야함(N,)여야지만 돌아감
+y_test = to_categorical(y_test)   # to_categorical의 경우: reshape 불필요. (N,1)이어도 상관 없음.
 
 x_train = x_train.reshape(50000,64,48)
 x_test = x_test.reshape(10000,64,48)
