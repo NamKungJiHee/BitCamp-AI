@@ -8,7 +8,7 @@ from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 
 path = "../_data/주식/"
 
-s = pd.read_csv(path + '삼성전자.csv', header=0)
+s = pd.read_csv(path + '삼성전자.csv', encoding= 'utf8')
 k = pd.read_csv(path + '키움증권.csv')
 
 s1 = pd.DataFrame(s)
