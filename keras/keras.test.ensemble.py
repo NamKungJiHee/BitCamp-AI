@@ -45,6 +45,7 @@ k1 = k[['시가','고가','저가','종가']].values
 x1, y1 = split_xy5(s1,5,2)
 x2, y2 = split_xy5(k1,5,2)
 
+
 # print(x1.shape)  # (887, 5, 4)  
 # print(y1.shape)  # (887, 2)
 # print(x2.shape)  #  (887, 5, 4)
