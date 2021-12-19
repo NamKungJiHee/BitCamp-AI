@@ -13,12 +13,10 @@ def split_x(dataset, size):
 dataset = split_x(a, size)       
 print(dataset)
 
-bbb = split_x(a, size)       
-print(bbb)
-print(bbb.shape)   # (6, 5) 
+
 
  
-x = bbb[:, :4]  # 행, 열 
-y = bbb[:, 4]   # 행, 열
+x = dataset[:, :4]  # 행, 열 
+y = dataset[:, 4]   # 행, 열
 print(x,y) 
 print(x.shape, y.shape) # (6, 4) (6,)
