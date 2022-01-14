@@ -1,4 +1,3 @@
-
 import numpy as np
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import tensorflow as tf
@@ -105,4 +104,4 @@ print('val_loss : ', val_loss[-1])
 print('acc : ', acc[-1])
 print('val_acc : ', val_acc[-1])
 """
->>>>>>> f62920a5b2fe717b4b950597110b3151c02f0314
+

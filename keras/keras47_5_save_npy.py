@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import numpy as np
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.python.keras.backend import binary_crossentropy

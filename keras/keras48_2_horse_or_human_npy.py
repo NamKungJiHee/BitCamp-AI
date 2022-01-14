@@ -1,4 +1,3 @@
-
 from keras_preprocessing.image import image_data_generator
 import numpy as np
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -87,8 +86,3 @@ print('loss: ', loss)
 loss:  [0.0, 1.0]
 '''
 
-
-
-
-
->>>>>>> f62920a5b2fe717b4b950597110b3151c02f0314

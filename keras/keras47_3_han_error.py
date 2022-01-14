@@ -1,4 +1,3 @@
-
 import numpy as np
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.python.keras.backend import binary_crossentropy
@@ -81,5 +80,3 @@ print('loss : ', loss[-1])
 print('val_loss : ', val_loss[-1])
 print('acc : ', acc[-1])
 print('val_acc : ', val_acc[-1])
-
->>>>>>> f62920a5b2fe717b4b950597110b3151c02f0314

@@ -1,4 +1,3 @@
-
 import numpy as np
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.python.keras.backend import binary_crossentropy
@@ -120,5 +119,4 @@ val_loss: 3787776.0
 acc: 0.5226757526397705
 val_acc: 0.0
 당신은 96.63 % 확률로 여자 입니다
->>>>>>> f62920a5b2fe717b4b950597110b3151c02f0314
 '''

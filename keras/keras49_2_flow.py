@@ -1,4 +1,3 @@
-
 from tensorflow.keras.datasets import fashion_mnist
 import numpy as np 
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -42,9 +41,3 @@ x_augmented = train_datagen.flow(x_augmented, y_augmented,   #np.zeros(augument_
 x_train = np.concatenate((x_train, x_augmented))  # concatenate는 괄호는 2개 써줘야한다.
 y_train = np.concatenate((y_train, y_augmented))
 #print(x_train.shape, y_train.shape)  # (100000, 28, 28, 1) (100000,)
-
-
-
-
-
->>>>>>> f62920a5b2fe717b4b950597110b3151c02f0314

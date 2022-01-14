@@ -1,4 +1,3 @@
-
 from keras_preprocessing.image import image_data_generator
 import numpy as np
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -51,6 +50,3 @@ print(xy_train[0][1])  # [0]번째 배치의 [1] y값
 # print(type(xy_train[0][0])) # <class 'numpy.ndarray'>
 # print(type(xy_train[0][1])) # <class 'numpy.ndarray'>
 
-
-
->>>>>>> f62920a5b2fe717b4b950597110b3151c02f0314

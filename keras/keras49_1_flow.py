@@ -1,4 +1,3 @@
-
 from tensorflow.keras.datasets import fashion_mnist
 import numpy as np 
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -41,4 +40,3 @@ for i in range(49):
     plt.axis('off')
     plt.imshow(x_data[0][i], cmap='gray')
 plt.show()
->>>>>>> f62920a5b2fe717b4b950597110b3151c02f0314
