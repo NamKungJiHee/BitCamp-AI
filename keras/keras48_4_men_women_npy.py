@@ -1,3 +1,4 @@
+
 import numpy as np
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense,Conv2D,Flatten, Dropout
@@ -73,4 +74,5 @@ print('loss: ', loss)
 
 ''' 
 loss:  [4.958835124969482, 0.6666666865348816]
+>>>>>>> f62920a5b2fe717b4b950597110b3151c02f0314
 '''

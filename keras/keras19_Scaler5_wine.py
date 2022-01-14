@@ -13,13 +13,16 @@ y = datasets.target
 
 #print(x.shape, y.shape)  # (178, 13) (178,)
 #print(y)
-#print(np.unique(y))  
+print(np.unique(y))   # [0 1 2]
+
+
 from tensorflow.keras.utils import to_categorical
 y = to_categorical(y)   #One Hot Encoding
 print(y)
 print(y.shape)   # (178, 3) 
 
 
+"""
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.8, shuffle=True, random_state=66)
 
 #scaler = MinMaxScaler()
@@ -58,7 +61,7 @@ loss=model.evaluate(x_test, y_test)
   
 print('loss: ', loss[0]) 
 print('accuracy: ', loss[1])
-
+"""
 '''
 results=model.predict(x_test[:7])
 print(y_test[:7])  

@@ -23,21 +23,21 @@ x = train.drop(['id', 'target'], axis=1)
 y = train['target']
 test_file = test_file.drop(['id'], axis=1) 
 
-#print(x.shape, y.shape) # (151, 13) (151,)
+print(x.shape, y.shape) # (151, 13) (151,)
 print(np.unique(y, return_counts=True))  # [0 1]    # 68, 83  각각 0과 1의 갯수 / pandas는 value_counts
 
 #print(train.info())    
 #print(train.describe())  
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.8, shuffle=True, random_state=66)
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.8, shuffle=True, random_state=51)
 
 
 model = Sequential()
-model.add(Dense(120,activation= 'relu' ,input_dim=13))
-model.add(Dense(90,activation='relu'))
-model.add(Dense(70)) 
-model.add(Dropout(0.3)) 
-model.add(Dense(70,activation='relu')) 
+model.add(Dense(30,activation= 'relu' ,input_dim=13))
+model.add(Dense(20,activation='relu'))
+model.add(Dense(17,activation='relu'))  
+model.add(Dense(11,activation='relu'))
+model.add(Dropout(0.3))
 model.add(Dense(1,activation='sigmoid'))  # sigmoid는 output이 1개!
 
 

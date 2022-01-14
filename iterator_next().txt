@@ -1,3 +1,4 @@
+
 1. iterator
 
 * iterable 객체: 반복 가능한 객체
@@ -98,4 +99,3 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 KeyError: 0
 >>> d['abc']
-1

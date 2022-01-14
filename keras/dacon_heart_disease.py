@@ -25,9 +25,9 @@ def models(model):
     elif model == 'tree':
         mod =  DecisionTreeClassifier(max_depth=5)
     elif model == 'forest':
-        mod =  RandomForestClassifier(max_depth=5, n_estimators=10, max_features=1)
+        mod =  RandomForestClassifier(max_depth=50, n_estimators=150, max_features=1)
     elif model == 'mlp':
-        mod = MLPClassifier(alpha=1, max_iter=1000)
+        mod = MLPClassifier(alpha=1, max_iter=10000)
     elif model == 'adaboost':
         mod = AdaBoostClassifier()
     elif model == 'gaussianNB':

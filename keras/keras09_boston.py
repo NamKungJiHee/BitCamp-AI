@@ -13,7 +13,7 @@ print(y.shape)
 
 print(datasets.feature_names)  #컬럼 이름
 print(datasets.DESCR)
-
+'''
 model = Sequential()
 model.add(Dense(30, input_dim=13))
 model.add(Dense(60))
@@ -42,3 +42,4 @@ print('r2스코어 : ', r2)
 #0.8이상
 #loss :  23.494508743286133
 #r2스코어 :  0.7216934825017536
+'''

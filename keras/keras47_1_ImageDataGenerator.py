@@ -2,7 +2,7 @@ from keras_preprocessing.image import image_data_generator
 import numpy as np
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
-train_datagen = ImageDataGenerator(
+train_datagen = ImageDataGenerator(   # 이미지를 학습시킬 때 학습데이터의 양이 적을 경우 학습데이터를 조금씩 변형시켜서 학습데이터의 양을 늘리는 방식중에 하나
     rescale=1./255, 
     horizontal_flip = True,
     vertical_flip = True,
@@ -53,6 +53,4 @@ print(type(xy_train))  # <class 'tensorflow.python.keras.preprocessing.image.Dir
 print(type(xy_train[0]))  # <class 'tuple'>
 print(type(xy_train[0][0])) # <class 'numpy.ndarray'>
 print(type(xy_train[0][1])) # <class 'numpy.ndarray'>
-
-
 

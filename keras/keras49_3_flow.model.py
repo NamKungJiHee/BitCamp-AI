@@ -1,3 +1,4 @@
+
 from tensorflow.keras.datasets import fashion_mnist
 import numpy as np 
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -93,4 +94,5 @@ print('acc score:', accuracy)
 
 ''' 
 loss:  [0.31738996505737305, 0.9021000266075134]
+>>>>>>> f62920a5b2fe717b4b950597110b3151c02f0314
 '''

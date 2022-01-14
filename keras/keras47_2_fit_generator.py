@@ -1,3 +1,4 @@
+
 import numpy as np
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.python.keras.backend import binary_crossentropy
@@ -118,4 +119,5 @@ loss:  0.623172402381897
 val_loss:  0.6858189105987549
 acc:  0.668749988079071
 val_acc:  0.5
+>>>>>>> f62920a5b2fe717b4b950597110b3151c02f0314
 '''

@@ -1,3 +1,4 @@
+
 # http://www.kaggle.com/c/dogs-vs-cats/data
 
 from keras_preprocessing.image import image_data_generator
@@ -125,4 +126,5 @@ val_loss:  0.7714969515800476
 acc:  0.5166770815849304
 val_acc:  0.6086956262588501
 당신은 50.51 % 확률로 고양이 입니다
+>>>>>>> f62920a5b2fe717b4b950597110b3151c02f0314
 '''
