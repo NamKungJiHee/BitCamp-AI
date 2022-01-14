@@ -6,8 +6,6 @@ from tensorflow.keras.callbacks import EarlyStopping
 
 #1) 데이터
 datasets = load_iris()
-#print(datasets.DESCR) # x = (150,4) y = (150,1)   ----> y를 (150,3)으로 바꿔줘야함
-#print(datasets.feature_names)
 
 x = datasets.data
 y = datasets.target
