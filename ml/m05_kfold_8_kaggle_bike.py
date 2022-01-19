@@ -43,7 +43,6 @@ model = RandomForestRegressor()
 scores = cross_val_score(model, x_train, y_train, cv = kfold)   # cv = kfold 이만큼 교차검증을 시키겠다.  # 분류모델이므로 scores는 accuracy값이다.
 print("ACC: ", scores, "\n cross_val_score: ", round(np.mean(scores),4)) # np.mean(scores)  5번 교차검증한 결과의 평균값! # 소수점4까지 잘라주기
 
-
 '''
 1. SVC: ACC:  [0.02353617 0.01549943 0.02238806 0.01033889 0.01608271]
  cross_val_score:  0.0176

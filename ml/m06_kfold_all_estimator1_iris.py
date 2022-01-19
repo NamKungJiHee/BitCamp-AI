@@ -46,9 +46,6 @@ for (name, algorithm) in allAlgorithms:   # [('AdaBoostClassifier', <class 'skle
         #continue   
         print(name, '은 에러')
         
-        
-
-        
     
 """ 
 AdaBoostClassifier 의 정답률:  0.6333333333333333 [0.95833333 0.75       0.91666667 0.83333333 0.875     ] 0.8667

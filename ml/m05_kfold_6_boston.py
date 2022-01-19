@@ -28,14 +28,11 @@ from sklearn.linear_model import LogisticRegression, LinearRegression
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 
-
-
 #model = KNeighborsRegressor()
 #model = LogisticRegression()
 #model = LinearRegression()
 #model = DecisionTreeRegressor()
 model = RandomForestRegressor()
-
 
 scores = cross_val_score(model, x_train, y_train, cv = kfold)   # cv = kfold 이만큼 교차검증을 시키겠다.  # 분류모델이므로 scores는 accuracy값이다.
 print("ACC: ", scores, "\n cross_val_score: ", round(np.mean(scores),4)) # np.mean(scores)  5번 교차검증한 결과의 평균값! # 소수점4까지 잘라주기

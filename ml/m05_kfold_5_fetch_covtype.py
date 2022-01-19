@@ -12,13 +12,13 @@ datasets =  fetch_covtype()
 x = datasets.data
 y = datasets.target
 
-from sklearn.model_selection import train_test_split, KFold, cross_val_score   # 교차검증
+from sklearn.model_selection import train_test_split, KFold, cross_val_score, StratifiedKFold  # 교차검증
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.8, shuffle=True, random_state=66)
 
 n_splits = 5
-kfold = KFold(n_splits = n_splits, shuffle = True, random_state = 66)
-
+#kfold = KFold(n_splits = n_splits, shuffle = True, random_state = 66)
+kfold = StratifiedKFold(n_splits = n_splits, shuffle = True, random_state = 66)
 from sklearn.linear_model import Perceptron
 from sklearn.svm import LinearSVC, SVC
 from sklearn.neighbors import KNeighborsClassifier  
@@ -29,9 +29,9 @@ from sklearn.ensemble import RandomForestClassifier
 #model = SVC()
 #model = Perceptron()
 #model = LinearSVC() 
-#model = KNeighborsClassifier()
+model = KNeighborsClassifier()
 #model = DecisionTreeClassifier()
-model = RandomForestClassifier()
+#model = RandomForestClassifier()
 
 
 scores = cross_val_score(model, x_train, y_train, cv = kfold)   # cv = kfold 이만큼 교차검증을 시키겠다.  # 분류모델이므로 scores는 accuracy값이다.
@@ -43,6 +43,8 @@ print("ACC: ", scores, "\n cross_val_score: ", round(np.mean(scores),4)) # np.me
 cross_val_score:  0.6197
 2. Perceptron : ACC:  [0.51103677 0.57477249 0.31403154 0.4990964  0.41989652] 
  cross_val_score:  0.4638
-3. DecisionTreeClassifier: ACC:  [0.93145586 0.93047697 0.93209053 0.93311245 0.9321651 ]
- cross_val_score:  0.9319
+3. DecisionTreeClassifier: ACC:  [0.93199372 0.93120845 0.93178933 0.93276823 0.93098181] 
+ cross_val_score:  0.9317
+ 4. RandomForestClassifier: ACC:  [0.95024849 0.95067877 0.95047439 0.95017319 0.95064597]
+ cross_val_score:  0.9504
 '''

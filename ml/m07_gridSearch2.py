@@ -37,13 +37,8 @@ model = SVC(C=1, kernel = 'linear', degree=3)
 #3) 훈련
 model.fit(x_train, y_train)
 
-
 #4) 평가, 예측
 print("model.score: ", model.score(x_test, y_test)) # model.score:  0.9666666666666667  = model.evaluate과 같다
  
 y_predict = model.predict(x_test)
 print("accuracy_score: ", accuracy_score(y_test, y_predict))  # accuracy_score:  0.9666666666666667
-
-
-
-

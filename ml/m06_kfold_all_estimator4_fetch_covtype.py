@@ -47,46 +47,18 @@ for (name, algorithm) in allAlgorithms:   # [('AdaBoostClassifier', <class 'skle
         print(name, '은 에러')     
     
 """ 
-AdaBoostClassifier 의 정답률:  0.8888888888888888 0.8099
-BaggingClassifier 의 정답률:  1.0 0.9155
-BernoulliNB 의 정답률:  0.4166666666666667 0.3175
-CalibratedClassifierCV 의 정답률:  0.9722222222222222 0.9786
-CategoricalNB 의 정답률:  0.5 nan
+AdaBoostClassifier 의 정답률:  0.5028613719095032 0.5124
+BaggingClassifier 의 정답률:  0.9627548342125418 0.9569
+BernoulliNB 의 정답률:  0.631833945767321 0.6323
+CalibratedClassifierCV 의 정답률:  0.7122621619063191 0.713
+CategoricalNB 의 정답률:  0.6321437484402296 nan
 ClassifierChain 은 에러
-ComplementNB 의 정답률:  0.8611111111111112 0.8648
-DecisionTreeClassifier 의 정답률:  0.9722222222222222 0.8727
-DummyClassifier 의 정답률:  0.4166666666666667 0.3958
-ExtraTreeClassifier 의 정답률:  0.9166666666666666 0.8512
-ExtraTreesClassifier 의 정답률:  1.0 0.9643
-GaussianNB 의 정답률:  1.0 0.9786
-GaussianProcessClassifier 의 정답률:  1.0 0.9643
-GradientBoostingClassifier 의 정답률:  0.9722222222222222 0.88
-HistGradientBoostingClassifier 의 정답률:  0.9722222222222222 0.9507
-KNeighborsClassifier 의 정답률:  1.0 0.9571
-LabelPropagation 의 정답률:  1.0 0.9645
-LabelSpreading 의 정답률:  1.0 0.9645
-LinearDiscriminantAnalysis 의 정답률:  1.0 0.9857
-LinearSVC 의 정답률:  0.9722222222222222 0.9786
-LogisticRegression 의 정답률:  1.0 0.9643
-LogisticRegressionCV 의 정답률:  0.9722222222222222 0.9643
-MLPClassifier 의 정답률:  0.9722222222222222 0.9714
-MultiOutputClassifier 은 에러
-MultinomialNB 의 정답률:  0.9444444444444444 0.8805
-NearestCentroid 의 정답률:  1.0 0.9574
-NuSVC 의 정답률:  1.0 0.9714
-OneVsOneClassifier 은 에러
-OneVsRestClassifier 은 에러
-OutputCodeClassifier 은 에러
-PassiveAggressiveClassifier 의 정답률:  0.9722222222222222 0.9929
-Perceptron 의 정답률:  0.9722222222222222 0.9788
-QuadraticDiscriminantAnalysis 의 정답률:  0.9722222222222222 0.9788
-RadiusNeighborsClassifier 의 정답률:  0.9722222222222222 0.9222
-RandomForestClassifier 의 정답률:  1.0 0.9717
-RidgeClassifier 의 정답률:  1.0 0.9786
-RidgeClassifierCV 의 정답률:  0.9722222222222222 0.9786
-SGDClassifier 의 정답률:  0.9722222222222222 0.9714
-SVC 의 정답률:  1.0 0.9786
-StackingClassifier 은 에러
-VotingClassifier 은 에러
+ComplementNB 의 정답률:  0.6225742880992745 0.6216
+DecisionTreeClassifier 의 정답률:  0.9399929433835615 0.9321
+DummyClassifier 의 정답률:  0.48625250638968015 0.4879
+ExtraTreeClassifier 의 정답률:  0.8554082080497061 0.8546
+ExtraTreesClassifier 의 정답률:  0.954304105745979 0.9489
+GaussianNB 의 정답률:  0.09079800005163378 0.0907
+GaussianProcessClassifier 은 에러
 """
 

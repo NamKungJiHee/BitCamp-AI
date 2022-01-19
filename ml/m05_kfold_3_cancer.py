@@ -25,12 +25,13 @@ y = datasets.target
 
 #print(x.shape, y.shape)
 
-from sklearn.model_selection import train_test_split, KFold, cross_val_score   # 교차검증
+from sklearn.model_selection import train_test_split, KFold, cross_val_score, StratifiedKFold # 주로 분류에서 사용함
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.8, shuffle=True, random_state=66)
 
 n_splits = 5
-kfold = KFold(n_splits = n_splits, shuffle = True, random_state = 66)
+#kfold = KFold(n_splits = n_splits, shuffle = True, random_state = 66)
+kfold = StratifiedKFold(n_splits = n_splits, shuffle = True, random_state = 66)
 
 from sklearn.linear_model import Perceptron
 from sklearn.svm import LinearSVC, SVC
@@ -39,13 +40,13 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 
-#model = SVC()
+model = SVC()
 #model = Perceptron()
 #model = LinearSVC() 
 #model = KNeighborsClassifier()
 #model = LogisticRegression()
 #model = DecisionTreeClassifier()
-model = RandomForestClassifier()
+#model = RandomForestClassifier()
 
 
 scores = cross_val_score(model, x_train, y_train, cv = kfold)   # cv = kfold 이만큼 교차검증을 시키겠다.  # 분류모델이므로 scores는 accuracy값이다.
@@ -55,18 +56,18 @@ print("ACC: ", scores, "\n cross_val_score: ", round(np.mean(scores),4)) # np.me
 #cross_val_score:  0.9143
 
 """
-1. SVC: ACC:  [0.87912088 0.97802198 0.92307692 0.89010989 0.9010989 ]
-cross_val_score:  0.9143  
-2. perceptron: ACC:  [0.89010989 0.97802198 0.69230769 0.84615385 0.93406593] 
- cross_val_score:  0.8681  
-3. LinearSVC: ACC:  [0.9010989  0.97802198 0.9010989  0.87912088 0.48351648]
- cross_val_score:  0.8286
-4.KNeighbors: ACC:  [0.91208791 0.95604396 0.95604396 0.9010989  0.93406593] 
- cross_val_score:  0.9319
-5.LogisticRegression: ACC:  [0.94505495 0.94505495 0.94505495 0.87912088 0.95604396]
+1. SVC:ACC:  [0.92307692 0.92307692 0.9010989  0.91208791 0.91208791] 
+ cross_val_score:  0.9143  
+2. perceptron:ACC:  [0.91208791 0.82417582 0.84615385 0.81318681 0.76923077] 
+ cross_val_score:  0.833 
+3. LinearSVC: ACC:  [0.91208791 0.93406593 0.93406593 0.92307692 0.92307692]
+ cross_val_score:  0.9253
+4.KNeighbors: ACC:  [0.94505495 0.92307692 0.94505495 0.94505495 0.91208791] 
  cross_val_score:  0.9341
-6.DecisionTreeClassifier: ACC:  [0.86813187 0.97802198 0.9010989  0.93406593 0.92307692] 
- cross_val_score:  0.9209
-7. RandomForestClassifier: ACC:  [0.94505495 0.98901099 0.94505495 0.96703297 0.97802198] 
- cross_val_score:  0.9648
+5.LogisticRegression: ACC:  [0.94505495 0.91208791 0.95604396 0.95604396 0.94505495]
+ cross_val_score:  0.9429
+6.DecisionTreeClassifier: ACC:  [0.91208791 0.91208791 0.93406593 0.89010989 0.87912088] 
+ cross_val_score:  0.9055
+7. RandomForestClassifier: ACC:  [0.94505495 0.97802198 0.98901099 0.93406593 0.92307692]
+ cross_val_score:  0.9538
 """
