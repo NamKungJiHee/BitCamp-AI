@@ -34,7 +34,7 @@ x_test = x_test.reshape(m,-1)/255.
 #2. 모델구성
 model = Sequential()
 #model.add(Dense(64, input_shape=(28*28, )))  
-model.add(Dense(80, input_shape=(784,)))  
+model.add(Dense(80, activation = 'relu', input_shape=(784,)))  
 model.add(Dense(60))
 model.add(Dropout(0.1))
 model.add(Dense(40))
@@ -47,15 +47,19 @@ model.compile(loss='categorical_crossentropy', optimizer = 'adam', metrics=['acc
 
 es = EarlyStopping(monitor='val_loss', patience=10, mode='auto',verbose=1, restore_best_weights=False)
 
+import time
+start = time.time()
 model.fit(x_train, y_train, epochs=100, batch_size=1000, validation_split=0.25, callbacks=[es]) 
-
+end = time.time()
 
 
 #4)평가, 예측
 loss= model.evaluate(x_test, y_test)
 print('loss: ', loss)
+print("걸린 시간: ", end - start)
 
 """   
-loss:  [0.24267248809337616, 0.9352999925613403]
+loss:  [0.1337820291519165, 0.972000002861023]
+걸린 시간:  7.90613055229187
 
 """

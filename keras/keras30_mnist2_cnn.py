@@ -49,11 +49,15 @@ model.compile(loss='categorical_crossentropy', optimizer = 'adam', metrics=['acc
 es = EarlyStopping(monitor='val_loss', patience=10, mode='auto',verbose=1, restore_best_weights=False)
 #mcp = ModelCheckpoint(monitor='val_loss', mode='min',verbose=1, save_best_only=True, filepath = './_ModelCheckPoint/keras30_2_MCP.hdf5') 
 
-model.fit(x_train, y_train, epochs=100, batch_size=1000, validation_split=0.25, callbacks=[es]) 
+import time
 
+start = time.time()
+model.fit(x_train, y_train, epochs=100, batch_size=1000, validation_split=0.25, callbacks=[es]) 
+end = time.time()
 
 
 #4)평가, 예측
+print("걸린시간: ", end - start)
 loss= model.evaluate(x_test, y_test)
 print('loss: ', loss)
 
