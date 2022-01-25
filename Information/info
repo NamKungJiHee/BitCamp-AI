@@ -1,0 +1,30 @@
+logloss : 이진분류
+mlogloss : m은 multi 다중분류
+rmse: 회귀모델
+
+n_estimators : tensorflow에서 epochs값과 같다. 
+
+XGBClassifier(n_estimators = 2000, 
+              learning_rate =0.05, 
+              n_jobs = -1, 
+              max_depth = 5,         # max_depth = 소수점 x
+              min_child_weight = 1,  # 가중치 합의 최소 / 값이 높을수록 과적합 방지
+              subsample = 1,         # 학습에 사용하는 데이터 샘플링 비율(값이 낮을수록 과적합 방지)
+              colsample_bytree = 1,  # 각 tree별 사용된 feature의 비율
+              reg_alpha = 1,         # (가중치) 규제 L1 
+              reg_lambda = 0,)       # 규제 L2 
+
+==============================================================
+eval_metric
+모델의 평가 함수를 조정하는 함수
+
+rmse: root mean square error
+mae: mean absolute error
+logloss: negative log-likelihood (이진분류)
+error: Binary classification error rate (0.5 threshold)  (이진)
+merror: Multiclass classification error rate  (다중)
+mlogloss: Multiclass logloss  (다중)
+
+
+
+
