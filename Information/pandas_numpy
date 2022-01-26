@@ -1,0 +1,21 @@
+## Data 지정 방법 ##
+
+1. Pandas
+path = "../~"
+datasets = pd.read_csv(path + 'winequality-white.csv', index_col = None, header = 0, sep=';')
+x = datasets.drop(['quality','chlorides','pH'], axis = 1)
+y = datasets['quality']
+==============================================================
+2. Numpy
+datasets = pd.read_csv(path + 'winequality-white.csv', index_col = None, header = 0, sep=';') # 분리
+datasets = datasets.values #####  pandas --> numpy로 바꿔주기 #####
+#print(type(datasets)) # <class 'numpy.ndarray'>
+x = datasets[:,:11]  # 모든 행, 10번째까지
+y = datasets[:, 11]  # 모든행, 11번째 열이 y 
+=============================================================
+3. Numpy시
+print("라벨: ", np.unique(y, return_counts = True))
+return_counts = True하면 각각의 y값들이 무엇이 있고 몇개씩 있는지 알 수 있다.
+
+4. Pandas시
+pd.value_counts
