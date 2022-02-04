@@ -1,8 +1,0 @@
-## 로그 변환 ##
-y_train = np.log1p(y_train)
-y_test = np.log1p(y_test)
-
-## 지수로 다시 변환 ##
-nmae = NMAE(np.expm1(y_test), np.expm1(y_predict)) 
-
-========== 참고로 expm1은 (N,1)과 같은 행렬을 받아주지 않는다. 스칼라로 변환해야함 ==========
