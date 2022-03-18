@@ -42,18 +42,18 @@ train_y = ohe.fit_transform(train[['target']])
 def create_model(num_layer, mid_units, num_filters):
     
     model = Sequential()
-    model.add(Conv2D(filters=num_filters[0], kernel_size=(2, 2),
+    model.add(Conv2D(filters=num_filters[0], kernel_size=(2, 3),
                  activation="relu",
                  input_shape=(8, 4, 1)))
     model.add(BatchNormalization())
     #model.add(Dropout(dropout_rate[0]))
     for i in range(1,num_layer):
-        model.add(Conv2D(filters=num_filters[i], kernel_size=(3, 3), padding="same", activation="relu"))
+        model.add(Conv2D(filters=num_filters[i], kernel_size=(3, 3), padding="same", activation="elu"))
         model.add(BatchNormalization())
         #model.add(Dropout(dropout_rate[i+1]))
             
     model.add(GlobalAveragePooling2D())
-    model.add(Dense(mid_units, activation='relu'))
+    model.add(Dense(mid_units, activation='elu'))
     #model.add(Dropout(dropout_rate[-1]))
     model.add(Dense(4, activation='softmax'))
     
@@ -78,7 +78,7 @@ def cnn_objective(trial: Trial) -> float:
     #dropout_rate = [int(trial.suggest_uniform("dropout_rate"+str(ii), 0.0, 0.5)) for ii in range(num_layer+1)]
     
         
-    seed = 47
+    seed = 44
     kfold = StratifiedKFold(n_splits=8, random_state = seed, shuffle = True) # Cross-validation cv=5
     es = EarlyStopping(monitor="val_acc", patience=15, mode="max", verbose=0)
     cv = np.zeros((train_x.shape[0], 4))
@@ -97,7 +97,7 @@ def cnn_objective(trial: Trial) -> float:
         model.compile(optimizer=optimizer,
                       loss="categorical_crossentropy",
                       metrics=["acc"])
-        model.fit(x_train, y_train, validation_data=(x_val, y_val), epochs=100, batch_size=40, 
+        model.fit(x_train, y_train, validation_data=(x_val, y_val), epochs=100, batch_size=32, 
                   callbacks=[es,mc], verbose=None)
         
         best = load_model(f"model_{n+1}.h5")
@@ -122,8 +122,8 @@ optuna.visualization.matplotlib.plot_slice(cnn_study);
 
 cnn_acc = []
 cnn_pred = np.zeros((test_x.shape[0], 4))
-seed = 47
-skf = StratifiedKFold(n_splits=8, random_state=47, shuffle=True)
+seed = 44
+skf = StratifiedKFold(n_splits=7, random_state=44, shuffle=True)
 es = EarlyStopping(monitor="val_acc", patience=15, mode="max", verbose=0)
 
 for i, (train_idx, val_idx) in enumerate(skf.split(train_x, train.target)):
