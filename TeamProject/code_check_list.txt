@@ -1,0 +1,42 @@
+1. selfy.py 
+카메라로 사진을 찍는다
+
+img_to_numpy.py
+
+\face_remember\images
+의 사진을 numpy로 만들어 yuhee_team.npy 로 저장
+
+cam_recognize.py
+사진을 찍어서 
+\test_img\\my_pic.jpg' 에 저장
+yuhee_team.npy 를 불러와서
+
+\my_pic.jpg' 이 누구인지 분석
+face_remember\\your_name.txt'
+에 이름 저장
+----------------
+\0414_결과물 
+얼굴인식.JPG
+
+2. G:\내 드라이브\유희지희 프로젝트\0414발표용코드\pic_age_sex
+
+selfy.py 
+카메라로 사진을 찍는다
+
+selfy_and_sex_age.py
+
+캠으로 사진을 찍어 얼굴인식 mediapipe
+mediapipe를 쓴이유는 얼굴인식이 더 잘됩니다
+----------------
+\0414_결과물 
+사진찍어줘.JPG
+사진찍어줘.mp4
+
+3. G:\내 드라이브\유희지희 프로젝트\0414발표용코드\Detection_pic
+pic_detection.py
+
+sample.jpg 분석
+----------------
+\0414_결과물 
+사진분석.png
+사진분석.mp4
