@@ -40,3 +40,7 @@ sample.jpg 분석
 \0414_결과물 
 사진분석.png
 사진분석.mp4
+
+4. 얼굴 감정분석
+
+emotions.py
