@@ -7,7 +7,7 @@ img_to_numpy.py
 의 사진을 numpy로 만들어 yuhee_team.npy 로 저장
 
 cam_recognize.py
-사진을 찍어서 
+사진을 찍어서  
 \test_img\\my_pic.jpg' 에 저장
 yuhee_team.npy 를 불러와서
 
