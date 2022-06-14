@@ -1,0 +1,4 @@
+내가 미리 구해놓은 python 3.9버전에서 작동하는 dlib파일을 
+C드라이브에 넣어놓고 cd c:\로 경로 c드라이브로 바꾼후
+pip install dlib하고 tab누르면 자동완성되는데 그 후 설치하면 
+python버전 맞춰줘서 tensorflow2.7.0환경에서도 작동가능하다
